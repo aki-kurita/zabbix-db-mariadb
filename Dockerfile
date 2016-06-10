@@ -12,7 +12,8 @@ ENV \
   DB_innodb_old_blocks_time=1000 \
   DB_innodb_flush_log_at_trx_commit=0 \
   DB_open_files_limit=4096 \
-  DB_max_connections=300
+  DB_max_connections=300 \
+  HTTP_PROXY=http://192.168.0.64:10080
 
 COPY container-files/ /tmp/
 

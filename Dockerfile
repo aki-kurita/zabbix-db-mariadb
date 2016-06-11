@@ -14,6 +14,7 @@ ENV \
   DB_open_files_limit=4096 \
   DB_max_connections=300
 
+# Add Proxy
 ENV http_proxy http://192.168.0.64:10080
 ENV https_proxy http://192.168.0.64:10080
 ENV ftp_proxy http://192.168.0.64:10080
@@ -33,6 +34,9 @@ RUN \
     cp -f /tmp/*.sh / && \
     rm -rf /tmp/* && \
     rm -rf /var/lib/mysql/*
+
+# Change mod
+RUN chmod -R 777 /etc/my.cnf.d
 
 # Add VOLUME to allow backup of data
 VOLUME ["/var/lib/mysql"]

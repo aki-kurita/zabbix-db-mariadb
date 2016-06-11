@@ -76,7 +76,8 @@ function install_db() {
     mv -f $ERROR_LOG "${ERROR_LOG}.old";
   fi
 
-  touch $ERROR_LOG && chown mysql $ERROR_LOG
+#  touch $ERROR_LOG && chown mysql $ERROR_LOG
+   touch $ERROR_LOG
 }
 
 #########################################################

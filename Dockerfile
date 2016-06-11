@@ -15,6 +15,8 @@ ENV \
   DB_max_connections=300
 
 ENV http_proxy http://192.168.0.64:10080
+ENV https_proxy http://192.168.0.64:10080
+ENV ftp_proxy http://192.168.0.64:10080
 
 COPY container-files/ /tmp/
 

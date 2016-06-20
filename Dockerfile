@@ -14,17 +14,11 @@ ENV \
   DB_open_files_limit=4096 \
   DB_max_connections=300
 
-# Add Proxy
-ENV http_proxy http://192.168.0.64:10080
-ENV https_proxy http://192.168.0.64:10080
-ENV ftp_proxy http://192.168.0.64:10080
-
 COPY container-files/ /tmp/
 
 RUN \
     cp /tmp/etc/yum.repos.d/* /etc/yum.repos.d/ && \
     yum install -y epel-release && \
-    yum update -y && \
     yum install -y MariaDB-server hostname net-tools pwgen git bind-utils bzip2 && \
     git clone https://github.com/maxhq/zabbix-backup && \
     mv /zabbix-backup/zabbix-mysql-dump /zabbix-backup/zabbix-mariadb-dump && \
@@ -34,9 +28,6 @@ RUN \
     cp -f /tmp/*.sh / && \
     rm -rf /tmp/* && \
     rm -rf /var/lib/mysql/*
-
-# Change mod
-RUN chmod -R 777 /etc/my.cnf.d
 
 # Add VOLUME to allow backup of data
 VOLUME ["/var/lib/mysql"]

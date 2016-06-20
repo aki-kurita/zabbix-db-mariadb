@@ -19,6 +19,7 @@ COPY container-files/ /tmp/
 RUN \
     cp /tmp/etc/yum.repos.d/* /etc/yum.repos.d/ && \
     yum install -y epel-release && \
+    yum update -y && \
     yum install -y MariaDB-server hostname net-tools pwgen git bind-utils bzip2 && \
     git clone https://github.com/maxhq/zabbix-backup && \
     mv /zabbix-backup/zabbix-mysql-dump /zabbix-backup/zabbix-mariadb-dump && \

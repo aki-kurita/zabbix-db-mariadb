@@ -59,8 +59,7 @@ function install_db() {
   if [ ! -d $VOLUME_HOME/mysql ]; then
     echo "=> An empty/uninitialized MariaDB volume is detected in $VOLUME_HOME"
     echo "=> Installing MariaDB..."
-#    mysql_install_db --user=mysql > /dev/null 2>&1
-    mysql_install_db
+    mysql_install_db --user=mysql > /dev/null 2>&1
     echo "=> Installing MariaDB... Done!"
   else
     echo "=> Using an existing volume of MariaDB."
@@ -76,8 +75,7 @@ function install_db() {
     mv -f $ERROR_LOG "${ERROR_LOG}.old";
   fi
 
-#  touch $ERROR_LOG && chown mysql $ERROR_LOG
-   touch $ERROR_LOG
+  touch $ERROR_LOG && chown mysql $ERROR_LOG
 }
 
 #########################################################

@@ -56,8 +56,7 @@ function terminate_db() {
 #   $ERROR_LOG
 #########################################################
 function install_db() {
-  rm -rf $VOLUME_HOME/mysql
-  if [ ! -d $VOLUME_HOME/mysql ]; then
+  if [ -d $VOLUME_HOME/mysql ]; then
     echo "=> An empty/uninitialized MariaDB volume is detected in $VOLUME_HOME"
     echo "=> Installing MariaDB..."
     mysql_install_db --user=mysql > /dev/null 2>&1

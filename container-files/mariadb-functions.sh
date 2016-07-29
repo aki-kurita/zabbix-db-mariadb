@@ -56,14 +56,14 @@ function terminate_db() {
 #   $ERROR_LOG
 #########################################################
 function install_db() {
-  if [ -d $VOLUME_HOME/mysql ]; then
+#  if [ ! -d $VOLUME_HOME/mysql ]; then
     echo "=> An empty/uninitialized MariaDB volume is detected in $VOLUME_HOME"
     echo "=> Installing MariaDB..."
     mysql_install_db --user=mysql > /dev/null 2>&1
     echo "=> Installing MariaDB... Done!"
-  else
-    echo "=> Using an existing volume of MariaDB."
-  fi
+#  else
+#    echo "=> Using an existing volume of MariaDB."
+#  fi
   
   # Move previous error log (which might be there from previously running container
   # to different location. We do that to have error log from the currently running
